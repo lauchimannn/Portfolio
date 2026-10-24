@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Desktop\\IT\\VS\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj": {}
+    "E:\\Windows.old\\Users\\bjenn\\OneDrive\\文件\\personal\\lcm\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Desktop\\IT\\VS\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj": {
+    "E:\\Windows.old\\Users\\bjenn\\OneDrive\\文件\\personal\\lcm\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Desktop\\IT\\VS\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj",
+        "projectUniqueName": "E:\\Windows.old\\Users\\bjenn\\OneDrive\\文件\\personal\\lcm\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj",
         "projectName": "ChocoPortfolio.Api",
-        "projectPath": "C:\\Users\\asus\\Desktop\\IT\\VS\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj",
-        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Desktop\\IT\\VS\\Portfolio\\ChocoPortfolio.Api\\obj\\",
+        "projectPath": "E:\\Windows.old\\Users\\bjenn\\OneDrive\\文件\\personal\\lcm\\Portfolio\\ChocoPortfolio.Api\\ChocoPortfolio.Api.csproj",
+        "packagesPath": "C:\\Users\\bjenn\\.nuget\\packages\\",
+        "outputPath": "E:\\Windows.old\\Users\\bjenn\\OneDrive\\文件\\personal\\lcm\\Portfolio\\ChocoPortfolio.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bjenn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.402/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
