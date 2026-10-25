@@ -13,11 +13,26 @@ function GameCard({
 }: GameCardProps) {
   return (
     <div className="game-card">
+      {image ? (
       <img
         className="game-image"
         src={image}
-        alt={name}
+        alt=""
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+          e.currentTarget.nextElementSibling?.classList.add(
+            "game-image-placeholder-visible"
+          );
+        }}
       />
+    ) : null}
+
+<div
+  className={`game-image-placeholder ${
+    !image ? "game-image-placeholder-visible" : ""
+  }`}
+  aria-hidden="true"
+/>
 
       <h3>{name}</h3>
 

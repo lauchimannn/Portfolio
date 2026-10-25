@@ -1,6 +1,6 @@
 # Setup
 dotnet user-secrets init
-dotnet user-secrets set "Steam:ApiKey" "50A88FD3AB750F4BE898A6E2648A7CDC"
+dotnet user-secrets set "Steam:ApiKey" "YOUR_STEAM_API_KEY"
 
 # Testing
 ## Backend

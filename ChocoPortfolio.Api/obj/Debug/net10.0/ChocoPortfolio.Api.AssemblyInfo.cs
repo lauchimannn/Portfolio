@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChocoPortfolio.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2986e3086d6436684d3ef2ebc6c436c8d8d3e83a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04a77f1a296def7d55e950c64f2de7a2e2c85c13")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChocoPortfolio.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChocoPortfolio.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

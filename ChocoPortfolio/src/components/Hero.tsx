@@ -62,7 +62,7 @@ function Hero() {
         </p>
         <div className="hero-actions">
           <a className="cyber-button" href="#projects">EXPLORE PROJECTS <span>↘</span></a>
-          <a className="text-link" href="/Choco-Lau_CV.pdf" target="_blank" rel="noreferrer">VIEW RESUME ↗</a>
+          <a className="text-link" href="/CV.pdf" target="_blank" rel="noreferrer">VIEW RESUME ↗</a>
         </div>
         <div className="hero-tags"><span>C# / .NET</span><span>REACT</span><span>PYTHON</span><span>API + HARDWARE</span></div>
       </div>

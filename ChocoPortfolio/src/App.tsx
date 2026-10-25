@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Gaming from "./components/Gaming";
+import Achievements from "./components/Achievements";
+import { scrollToTop } from "./utils/scrollToTop";
 
 function App() {
   return (
@@ -12,30 +14,73 @@ function App() {
         <Hero />
         <Projects />
         <Gaming />
+        <Achievements />
         <section className="section beyond-section" id="beyond">
-          <div className="section-kicker">04 / OFFLINE MODE</div>
+          <div className="section-kicker">03 / OFFLINE MODE</div>
           <h2>BEYOND THE <span>CODE</span></h2>
           <p className="section-intro">
-            When I'm not building software, I'm usually gaming, playing guitar,
-            watching anime, or exploring something new.
+            When I'm not coding, that's what I'm usually doing.
           </p>
           <div className="interest-grid">
-            <article className="interest-card"><span className="interest-icon">♪</span><h3>GUITAR</h3><p>Music, practice, and the occasional riff.</p></article>
-            <article className="interest-card"><span className="interest-icon">▣</span><h3>GAMING</h3><p>Systems, stories, co-op chaos, and strategy.</p></article>
-            <article className="interest-card"><span className="interest-icon">✦</span><h3>ANIME & THEATRE</h3><p>Good stories and creative worlds.</p></article>
+            <article className="interest-card"><span className="interest-icon">♪</span><h3>GUITAR</h3><p>Casual learner.</p></article>
+            <article className="interest-card"><span className="interest-icon">▣</span><h3>GAMING</h3><p>Active gamer.</p></article>
+            <article className="interest-card"><span className="interest-icon">✦</span><h3>ANIME & THEATRE</h3><p>Nerd.</p></article>
           </div>
         </section>
+        
         <section className="section contact-section" id="contact">
-          <div className="section-kicker">05 / OPEN CHANNEL</div>
+          <div className="section-kicker">04 / CONTACT ME</div>
           <h2>LET'S BUILD <span>SOMETHING</span></h2>
-          <p className="section-intro">Have a project, an idea, or a role in mind? Send me a message.</p>
-          <a className="cyber-button" href="mailto:bjenny122@gmail.com">CONTACT ME <span>↗</span></a>
+
+          <div className="contact-links">
+            <a
+              className="contact-link"
+              href="mailto:bjenny122@gmail.com"
+            >
+              EMAIL <span>↗</span>
+            </a>
+
+            <a
+              className="contact-link"
+              href="https://linkedin.com/in/choco-lau-a3414318a"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LINKEDIN <span>↗</span>
+            </a>
+
+            <a
+              className="contact-link"
+              href="https://github.com/lauchimannn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GITHUB <span>↗</span>
+            </a>
+
+            <a
+              className="contact-link"
+              href="https://wa.me/85290452396"
+              target="_blank"
+              rel="noreferrer"
+            >
+              WHATSAPP <span>↗</span>
+            </a>
+          </div>
         </section>
       </main>
       <footer className="site-footer">
         <span>© {new Date().getFullYear()} CHOCO LAU</span>
         <span>BUILT WITH <b>REACT</b> + <b>.NET</b></span>
-        <a href="#top">BACK TO TOP ↑</a>
+        <a
+          href="#top"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToTop();
+          }}
+        >
+          BACK TO TOP ↑
+        </a>
       </footer>
     </>
   );

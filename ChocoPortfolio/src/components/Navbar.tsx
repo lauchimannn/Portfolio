@@ -1,3 +1,4 @@
+import { scrollToTop } from "../utils/scrollToTop";
 import { useState } from "react";
 
 function Navbar() {
@@ -8,7 +9,15 @@ function Navbar() {
   return (
     <header className="site-header" id="top">
       <nav className="navbar shell" aria-label="Main navigation">
-        <a className="brand" href="#top" onClick={closeMenu}>
+        <a
+          className="brand"
+          href="#top"
+          onClick={(e) => {
+            e.preventDefault();
+            closeMenu();
+            scrollToTop();
+          }}
+        >
           <span className="brand-mark">C<span>.</span></span>
           <span>CHOCO<span className="brand-muted">.DEV</span></span>
         </a>
@@ -26,7 +35,7 @@ function Navbar() {
           <a href="#gaming" onClick={closeMenu}>GAMING</a>
           <a href="#beyond" onClick={closeMenu}>BEYOND CODE</a>
           <a href="#contact" onClick={closeMenu}>CONTACT</a>
-          <a className="nav-cv" href="/Choco-Lau_CV.pdf" target="_blank" rel="noreferrer">RESUME ↗</a>
+          <a className="nav-cv" href="/CV.pdf" target="_blank" rel="noreferrer">RESUME ↗</a>
         </div>
       </nav>
     </header>
