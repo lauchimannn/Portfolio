@@ -10,7 +10,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Frontend", policy =>
     {
         policy
-            .WithOrigins("http://localhost:5173")
+            .WithOrigins(
+                "http://localhost:5173",
+                "http://158.180.76.114"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -231,9 +234,13 @@ app.MapGet("/api/steam/achievements", async (int appid, IConfiguration config) =
                     ? unlockElement.GetInt64()
                     : 0L;
 
+            if (description?.Trim() == "No description available.")
+            {
+                description = "";
+            }
+
             return new
             {
-                // Use the real achievement title, not the API identifier.
                 name = string.IsNullOrWhiteSpace(displayName)
                     ? (string.IsNullOrWhiteSpace(apiName)
                         ? "Unknown Achievement"

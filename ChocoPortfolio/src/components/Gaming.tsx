@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react";
-import GameCard from "./GameCard";
 
 interface Game {
   appid: number;
@@ -31,7 +30,7 @@ function Gaming() {
 
   useEffect(() => {
     // Load Steam games.
-    fetch("http://localhost:5256/api/steam/games")
+    fetch("/api/steam/games")
       .then(async (response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch Steam games");
@@ -57,7 +56,7 @@ function Gaming() {
       });
 
     // Load cached achievement summary.
-    fetch("http://localhost:5256/api/steam/achievement-summary")
+    fetch("api/steam/achievement-summary")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to load achievement summary");

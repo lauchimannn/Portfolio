@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-const API_BASE = "http://localhost:5256";
-
 interface SteamGame {
   appid: number;
   name: string;
@@ -13,6 +11,7 @@ interface Achievement {
   name: string;
   description: string | null;
   achieved: boolean;
+  unlockedAt: "0001-01-01 00:00:00";
   icon: string | null;
   iconGray: string | null;
   unlockTime: number;
@@ -34,7 +33,7 @@ function Achievements() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/steam/games`)
+    fetch("/api/steam/games")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load Steam games.");
         return res.json();
@@ -63,7 +62,7 @@ function Achievements() {
 
       try {
         const res = await fetch(
-          `${API_BASE}/api/steam/achievements?appid=${selectedAppId}`,
+          `/api/steam/achievements?appid=${selectedAppId}`,
           { signal: controller.signal }
         );
 
@@ -191,25 +190,34 @@ function Achievements() {
                           <h3>{achievement.name}</h3>
                           <p>
                             {achievement.description ||
-                              "No description available."}
+                              ""}
                           </p>
                         </div>
 
                         <div
                           className="achievement-status"
-                          aria-label={
-                            achievement.achieved
-                              ? "Unlocked"
-                              : "Locked"
-                          }
-                          title={
-                            achievement.achieved
-                              ? "Unlocked"
-                              : "Locked"
-                          }
+                          aria-label={achievement.achieved ? "Unlocked" : "Locked"}
+                          title={achievement.achieved ? "Unlocked" : "Locked"}
                         >
                           {achievement.achieved && (
-                            <span>UNLOCKED</span>
+                            <div className="achievement-unlocked">
+                              <span>UNLOCKED</span>
+                              {achievement.unlockTime > 0 && (
+                                <span className="unlock-time">
+                                  {new Date(
+                                    achievement.unlockTime * 1000
+                                  ).toLocaleString("en-GB", {
+                                    day: "2-digit",
+                                    month: "short",
+                                    year: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    second: "2-digit",
+                                    hour12: false,
+                                  })}
+                                </span>
+                              )}
+                            </div>
                           )}
                         </div>
                       </article>

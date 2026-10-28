@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import ResumeModal from "./ResumeModal";
 
 type TerminalLine = { type: "input" | "output" | "error"; text: string };
 
@@ -26,11 +27,37 @@ function runCommand(command: string): string[] {
 }
 
 function Hero() {
+  const [resumeOpen, setResumeOpen] = useState(false);
   const [command, setCommand] = useState("");
   const [history, setHistory] = useState<TerminalLine[]>([
     { type: "output", text: "CH0C0_OS v1.0 // portfolio terminal" },
     { type: "output", text: 'Type "help" to explore available commands.' },
   ]);
+  const terminalBodyRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const terminal = terminalBodyRef.current;
+    if (terminal) {
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+  }, [history]);
+
+  const handleTerminalKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.ctrlKey && event.key.toLowerCase() === "c") {
+      event.preventDefault();
+
+      setHistory((old) => [
+        ...old,
+        {
+          type: "input",
+          text: `visitor@choco:~$ ${command}^C`,
+        },
+      ]);
+
+      setCommand("");
+    }
+  };
 
   const submitCommand = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,7 +70,10 @@ function Hero() {
     const output = runCommand(entered);
     setHistory((old) => [
       ...old,
-      { type: "input", text: entered ? `visitor@choco:~$ ${entered}` : "visitor@choco:~$" },
+      {
+        type: "input",
+        text: entered ? `visitor@choco:~$ ${entered}` : "visitor@choco:~$",
+      },
       ...output.map((text) => ({ type: entered && output[0]?.startsWith("Command not found") ? "error" as const : "output" as const, text })),
     ]);
     setCommand("");
@@ -63,6 +93,12 @@ function Hero() {
         <div className="hero-actions">
           <a className="cyber-button" href="#projects">EXPLORE PROJECTS <span>↘</span></a>
           <a className="text-link" href="/CV.pdf" target="_blank" rel="noreferrer">VIEW RESUME ↗</a>
+          {/* <button
+            className="text-link"
+            onClick={() => setResumeOpen(true)}
+          >
+            VIEW RESUME ↗
+          </button> */}
         </div>
         <div className="hero-tags"><span>C# / .NET</span><span>REACT</span><span>PYTHON</span><span>API + HARDWARE</span></div>
       </div>
@@ -73,10 +109,23 @@ function Hero() {
           <span>CHOCO://TERMINAL</span>
           <span className="terminal-live">LIVE</span>
         </div>
-        <div className="terminal-body" aria-live="polite">
+        <div
+          className="terminal-body"
+          aria-live="polite"
+          ref={terminalBodyRef}
+        >
           <div className="terminal-system">SYSTEM READY <span>●</span></div>
           {history.map((line, index) => (
-            <p className={`terminal-line ${line.type}`} key={`${index}-${line.text}`}>{line.text}</p>
+            <p className={`terminal-line ${line.type}`} key={`${index}-${line.text}`}>
+              {line.type === "input" && line.text.startsWith("visitor@choco:~$") ? (
+                <>
+                  <span className="terminal-prompt">visitor@choco:~$</span>
+                  {line.text.slice("visitor@choco:~$".length)}
+                </>
+              ) : (
+                line.text
+              )}
+            </p>
           ))}
           <form className="terminal-input-row" onSubmit={submitCommand}>
             <label htmlFor="terminal-command">visitor@choco:~$</label>
@@ -84,6 +133,7 @@ function Hero() {
               id="terminal-command"
               value={command}
               onChange={(event) => setCommand(event.target.value)}
+              onKeyDown={handleTerminalKeyDown}
               autoComplete="off"
               spellCheck={false}
               aria-label="Terminal command"
@@ -94,6 +144,10 @@ function Hero() {
         <div className="terminal-footer"><span>UTF-8</span><span>INTERACTIVE SHELL</span><span>100%</span></div>
       </div>
       <a className="scroll-cue" href="#projects"><span /> SCROLL TO EXPLORE</a>
+
+      {resumeOpen && (
+            <ResumeModal onClose={() => setResumeOpen(false)} />
+          )}
     </section>
   );
 }
